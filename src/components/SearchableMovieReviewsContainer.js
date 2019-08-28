@@ -25,15 +25,18 @@ class SearchableMovieReviewsContainer extends Component {
         })
     }
 
-    handleSearch = () => {
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${this.state.searchTerm}&api-key=${NYT_API_KEY}`).then(resp => resp.json()).then(data => {console.log(data); this.setState({...this.state, reviews: data.results})})
+    handleSearch = (e) => {
+        e.preventDefault()
+        fetch(`${URL}` + `${this.state.searchTerm}` + `&api-key=${NYT_API_KEY}`).then(resp => resp.json()).then(data =>  this.setState({...this.state, reviews: data.results}))
     }
 
     render() {
         return(
             <div className="searchable-movie-reviews">
+                <form onSubmit={(e) => this.handleSearch(e)}>
                 <input type='text' name='searchTerm' placeholder="search" onChange={(e) => this.changeSearch(e)}></input>
-                <button onClick={this.handleSearch}>Go</button>
+                <input type="submit"></input>
+                </form>
                 <MovieReviews reviews={this.state.reviews}/>
             </div>
         )
