@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'isomorphic-fetch';
 import MovieReviews from './MovieReviews'
 
-const NYT_API_KEY = 'dKR9Tdl1eI9muRax2BtwuYEnmesWhxuV';
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?query='
 
 export default class SearchableMovieReviewsContainer extends Component {
